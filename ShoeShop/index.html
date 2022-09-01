@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoe Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <link rel="stylesheet" href="shoe.css">
+</head>
+
+<body>
+    <div>
+        <div class="rowfisrt">
+            <img src="https://thietkewebaio.com/wp-content/uploads/2021/08/thiet-ke-banner-chuan.png" alt="">
+        </div>
+        <div class="rowsecond">
+            <tr>
+
+                <td>
+
+                    <input id="search" placeholder="Input the name..." class="btn btn-input" type="text">
+                    <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
+                    <button class=" btn btn-search" onclick="makeSearch()">Search</button>
+                </td>
+            </tr>
+        </div>
+
+        <div class="rowthird">
+            <ul>
+                <li><a href="#">Home Page</a></li>
+                <li><a href="#">Women</a></li>
+                <li><a href="#">Departments</a></li>
+                <li><a href="#">Brands</a></li>
+                <li><a href="#">Sale</a></li>
+
+            </ul>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <!-- Nút add này để bung màn lên -->
+                <button class="btn-add" onclick="openAdd()">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    Add
+                </button>
+
+            </div>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr class="th">
+                            <th>Name Product</th>
+                            <th>Photo</th>
+                            <th>Size</th>
+                            <th>Color</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="model-container">
+            <div class="model">
+                <div class="modelheader">
+                    <div class="modeltitle"> Add the new product!</div>
+                    <div class="closemodel" onclick="closeAdd()">&times;</div>
+
+                </div>
+
+                <div class="modelbody">
+                    <div class="modelfirst">
+                        <div class="descript">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label for="name">Name</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="name">
+                                        <!-- Để có id khi soi vào name hỗ trợ reset lại edit -->
+                                        <input type="hidden" value="0" id="productId">
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="photo">Photo</label>
+                                    </td>
+                                    <td>
+                                        <input type="url" id="photo">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="size">Size</label>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="size">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="color">Color</label>
+                                    </td>
+                                    <td>
+                                        <input type="url" id="color">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="price">Price</label>
+                                    </td>
+                                    <td>
+                                        <input type="number" id="price">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="quantity">Quantity</label>
+                                    </td>
+                                    <td>
+                                        <input type="number" id="quantity">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <!-- nút add (makeAdd) là để thêm sản phẩm -->
+                                        <button onclick="makeAdd()" class="btn-3btn btn-primary">Add</button>
+
+                                        <!-- nút save (makesave) là để thêm sản phẩm -->
+                                        <button onclick="makeSave()" class="btn-3btn btn-warning d-none">Save</button>
+
+                                        <!-- nút cancel(makecancel là để trả lại vị trí đầu) -->
+                                        <button onclick="makeCancel()" class="btn-3btn btn-danger">Cancel</button>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <script src="shoe.js"></script>
+</body>
+
+</html>
