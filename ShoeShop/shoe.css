@@ -58,12 +58,12 @@
 }
 .btn-add{
     width: 110px;
-    height:60px;
+    height:50px;
     font-size: 20px;
     margin: 10px;
     background-color: #003953;
     color: white;
-    border-radius: 3px;
+    border-radius: 5px;
     cursor: pointer;
 }
 .btn-add:hover{
@@ -162,6 +162,11 @@
 .photo-sm{
     width: 200px;
     height:200px;
+    border-radius: 5px;
+}
+.photo-sm:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 .text-center {
     text-align: center;

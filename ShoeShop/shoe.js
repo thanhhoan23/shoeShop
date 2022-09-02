@@ -17,22 +17,32 @@ function init() {
     if (localStorage.getItem(product_key) == null) {
         products = [new Product(
             1,
-            "jordan",
+            "Nike",
             "https://media.istockphoto.com/photos/white-sneaker-on-a-blue-gradient-background-mens-fashion-sport-shoe-picture-id1303978937?b=1&k=20&m=1303978937&s=170667a&w=0&h=az5Y96agxAdHt3XAv7PP9pThdiDpcQ3otWWn9YuJQRc=",
             "36,37,38",
-            "white,black",
-            45000,
+            "White",
+            650000,
             10,
         ),
         new Product(
             2,
-            "folwer",
-            "https://thumbs.dreamstime.com/b/purple-flower-2212075.jpg",
+            "Classic",
+            "https://media.istockphoto.com/photos/white-sneakers-shoes-on-colorful-background-picture-id1293462379?k=20&m=1293462379&s=612x612&w=0&h=PFmGNk32WAJ5LceHqqN6F2qDR1UBCjF8umfoozn1_ds=",
             "36,37,38",
-            "red,purple",
-            45000,
-            10,
-        ),];
+            "Black",
+            450000,
+            20,
+        ),
+        new Product(
+            3,
+            "Adidas",
+            "https://media.istockphoto.com/photos/side-view-of-one-white-unisex-sneaker-with-velcro-fasteners-standing-picture-id1329466914?k=20&m=1329466914&s=612x612&w=0&h=gXE7cFAInh_4T4-BDYpV7nQiZvtH1FdYAV3SVgifR_k=",
+            "36,37,38",
+            "White",
+            750000,
+            15,
+        ),
+    ];
         setData(product_key, products);
     } else {
         products = getData(product_key);
@@ -98,17 +108,18 @@ function makeAdd() {
     let color = document.querySelector("#color").value;
     let price = document.querySelector("#price").value;
     let quantity = document.querySelector("#quantity").value;
-    if (name.trim() == "" || name == null || color.trim() == "" || color == null || size.trim() == "" || size == null) {
-        alert("Please enter the information of product");
+    if ( name.trim() == "" || name == null || photo.trim()=="" || photo == null || color.trim() == "" || color == null || size.trim() == "" || size == null) {
+        alert("Please You can enter wrong information and empty string");
         return;
-    }
+    };
     if (quantity < 0 || quantity == "") {
         alert('Quantity cannot be negative and empty string');
         return;
-    }
+    };
     if (price <= 0 || price > 1000000 || price == "") {
-        alert('price cannot be negative and than more one milion and empty string')
-    }
+        alert('Price cannot be negative and than more one milion and empty string');
+        return;
+    };
     let newProduct = new Product(
         id,
         name,
@@ -198,6 +209,7 @@ function makeEdit(productId) {
     document.querySelector("#color").value = product.color;
     document.querySelector("#price").value = product.price;
     document.querySelector("#quantity").value = product.quantity;
+    
 
     document.querySelector(".modeltitle").innerText = "Update the Shoe";
 }
@@ -217,10 +229,23 @@ function makeSave() {
     product.price = document.querySelector("#price").value;
     product.quantity = document.querySelector("#quantity").value;
 
-    if (product.name.trim() == "" || product.name == null) {
-        alert("Please enter the name product and empty string");
+    if (product.name.trim() == "" || product.name == null ||  product.photo.trim()== "" ||  product.photo==null
+    || product.size.trim == "" || product.size == null || product.color.trim() == "" || product.color== null ) {
+        alert("Please enter the name product and empty string and wrong information");
         return;
-    }
+    };
+
+
+    if (product.quantity < 0 || product.quantity == "") {
+        alert('Quantity cannot be negative and empty string');
+        return;
+    };
+    if (product.price <= 0 || product.price > 1000000 || product.price == "") {
+        alert('Price cannot be negative and than more one milion and empty string');
+        return;
+    };
+
+
     setData(product_key, products);
     closeAdd();
     renderProduct();
