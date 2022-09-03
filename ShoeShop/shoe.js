@@ -12,7 +12,7 @@ class Product {
 const product_key = "data";
 var products = [];
 
-// lưu mã nguồn 
+// Lưu mã nguồn bằng localstorage
 function init() {
     if (localStorage.getItem(product_key) == null) {
         products = [new Product(
@@ -49,21 +49,22 @@ function init() {
     }
 
 }
-function getData(key) {
-    return JSON.parse(localStorage.getItem(key));
-}
 function setData(key, data) {
     return localStorage.setItem(key, JSON.stringify(data));
 }
+function getData(key) {
+    return JSON.parse(localStorage.getItem(key));
+}
+
 
 // Hiển thị sản phẩm
 
-function renderProduct() {
-    let htmls = products.map(function (product, index) {
+function renderProduct(renderProduct) {
+    let htmls = renderProduct.map(function (product) {
         return ` <tr class="text-center">
         <td>${product.name}</td>
         <td>
-        <img class="photo-sm" src="${product.photo}" alt="No Img">
+        <img class="photo-sm" src="${product.photo}" alt="Invalid photo">
         </td>
         <td>${product.size}</td>
         <td>${product.color}</td>
@@ -91,7 +92,7 @@ function closeAdd() {
     reset()
 
 }
-// Cance khi bung màn add lên
+// Cancel khi bung màn add lên
 
 function makeCancel() {
     document.querySelector(".model-container").classList.remove('show');
@@ -133,7 +134,7 @@ function makeAdd() {
 
     products.unshift(newProduct);
     setData(product_key, products);
-    renderProduct();
+    renderProduct(products);
     reset()
     closeAdd()
 
@@ -164,19 +165,6 @@ function findMaxid() {
 }
 // P2-p1 giảm dần, nhưg id thì tăng lên 
 
-
-// xóa sản phẩm
-
-// function makeDelete (productId) {
-//     let del = products.findIndex(function (pro){
-//         return pro.id == productId;
-//     })
-
-// products.splice(del,1);
-// renderProduct ();
-
-// }
-
 // xóa sản phẩm
 
 function makeDelete(id) {
@@ -187,7 +175,7 @@ function makeDelete(id) {
     if (confir) {
         products.splice(index, 1);
         setData(product_key, products);
-        renderProduct();
+        renderProduct(products);
     }
 }
 
@@ -230,12 +218,11 @@ function makeSave() {
     product.quantity = document.querySelector("#quantity").value;
 
     if (product.name.trim() == "" || product.name == null ||  product.photo.trim()== "" ||  product.photo==null
-    || product.size.trim == "" || product.size == null || product.color.trim() == "" || product.color== null ) {
-        alert("Please enter the name product and empty string and wrong information");
+    || product.color.trim() == "" || product.color== null || product.size.trim() == "" || product.size == null ) {
+        alert("Please input  the name product and empty string and wrong information");
         return;
     };
-
-
+   
     if (product.quantity < 0 || product.quantity == "") {
         alert('Quantity cannot be negative and empty string');
         return;
@@ -248,20 +235,21 @@ function makeSave() {
 
     setData(product_key, products);
     closeAdd();
-    renderProduct();
+    renderProduct(products);
 }
 
 // Tìm kiếm
 
-function makeSearch() {
+function search() {
     let keyword = document.querySelector("#search").value;
+    console.log(keyword);
     let result = products.filter(function (product) {
         return product.name.toLowerCase().includes(keyword.toLowerCase())
-    })
+    });
     renderProduct(result);
+    console.log(result);
 }
 
 
-
 init()
-renderProduct();
+renderProduct(products);

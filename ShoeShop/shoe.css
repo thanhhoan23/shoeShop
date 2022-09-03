@@ -4,16 +4,37 @@
     box-sizing: border-box;
     font-family:'Courier New', Courier, monospace;
 }
+/* rowfirst: dòng đầu tiền hình ảnh banner */
 .rowfisrt > img {
     width: 100%;
     height: 250px;
    
 }
+/* rowsecond: dòng thứ 2 bao gồm btn-input của tìm kiếm  */
+
 .rowsecond {
     background-color:white;
     width: 100%;
     height: 80px;
+    text-align: center ;
 }
+#search {
+    margin: auto;
+    height:40px;
+    width: 350px;
+    flex-grow: 0.3;
+    margin: 20px auto;
+    border-radius: 3px;
+
+}
+
+/* rowthird: dòng thứ 3 bao gồm các thẻ a về home page... */
+.rowthird {
+    background-color: #f4f4f4;
+    height: 48px;
+    color: #003953;
+}
+
 .rowthird ul {
     list-style: none;
     padding: 0;
@@ -33,29 +54,12 @@
     background-color: lightgray;
     color:#000000
 }
-.btn{
 
+/* nút add ở phía ngoài để bung màn lên ở html */
+.btn{
     margin: 0px auto;
 }
-.btn-input{
-    height:40px;
-    width: 350px;
-    flex-grow: 0.3;
-    margin: 20px auto;
-    border-radius: 3px;
-}
 
-.btn-search{
-   background-color:#003953;
-   color: white;
-   height:40px;
-   width: 80px;
-   border-radius: 5px;
-}
-.btn-search:hover {
-    cursor: pointer;
-    background-color:#0076bd ;
-}
 .btn-add{
     width: 110px;
     height:50px;
@@ -67,9 +71,11 @@
     cursor: pointer;
 }
 .btn-add:hover{
+    transform: scale(1.1);
     background-color: #0076bd;
 }
 
+/* nút edit và delete ở js */
 .btn-edit-delete{
     width: 60px;
     height: 40px;
@@ -95,23 +101,27 @@
     transform: scale(1.1);
 
 }
+
+/* khi ở trong màn có 3 nút save cancel và add ở html  */
 .btn-3btn {
     width: 60px;
     height: 30px;
     margin: 10px;
     border-radius: 5px;
 }
-
+/* primary: là nút add 
+    warning: là nút save */
 .btn-primary, .btn-warning {
     background-color: #003953;
     color: white;
 }
 
-.btn-primary, .btn-warning:hover {
+.btn-primary:hover, .btn-warning:hover {
     cursor: pointer;
     background-color: #0076bd;
     transform: scale(1.1);
 }
+/* danger: là nút cancel */
 .btn-danger {
     background-color: goldenrod;
     color: white;
@@ -121,17 +131,8 @@
     cursor: pointer;
     transform: scale(1.1);
 }
-.rowsecond{
-    text-align: center ;
-}
 
-.rowthird {
-    background-color: #f4f4f4;
-    height: 48px;
-    color: #003953;
-}
-
-
+/* container để chứa sản phẩm hiện ra bao gồm th và td */
 .container {
     max-width: 95%;
     margin: 30px auto;
@@ -140,6 +141,7 @@
 
     width: 100%;
 }
+/* đây là bảng */
 .table{
     width: 100%;
     background-color: #f4f4f4;
@@ -175,18 +177,8 @@
     padding: 10px;
 }
 
+/* Đây là chứa khi bung màn lên */
 .model-container{
-    /* position: fixed;
-    left: 0px;
-    top:0px;
-    background-color: grey (0, 0, 0, 0.9);
-    align-items: flex-start;
-    justify-content: center; */
-    /* khong xuat hien dung opacity */
-    /* opacity: 0;
-    pointer-events: none; */
-    /* kich vao se an  */
-
     position: fixed;
     top:0;
     left: 0;
@@ -194,12 +186,20 @@
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.2);
     display: flex;
-    align-items: flex-start;
+    /* align-items: flex-start; */
     justify-content: center;
+
+    /* không xuất hiện là dùng opacity = 0 */
     opacity: 0;
+
+    /* kích vào sẽ ẩn là pointer-events: none */
     pointer-events: none;
+
+    /* đây là thấy xuất hiện đậm dần lên */
     transition: .3s ease;
 }
+/* khi muốn xuất hiện màn là show */
+
 .show {
     opacity: 1;
     pointer-events: auto;
@@ -208,7 +208,7 @@
 .model {
     width: 400px;
     height: 250px;
-    background-color: aliceblue;
+    background-color: rgb(203, 226, 245);
     margin-top: 50px;
     border-radius: 10px;
     padding: 10px 30px;
@@ -229,6 +229,7 @@
     font-weight: 600;
     color:#003953
 }
+/* closemodel này là dấu x (&times;) */
 
 .closemodel{
     font-weight: bolder;
@@ -237,10 +238,13 @@
 .closemodel:hover {
     cursor: pointer;
 }
+
+/* d-none là dùng để support nút toggle hoặc nút add hoặc remove. xuất hiện hay k xuất hiện */
 .d-none {
     display: none;
 }
 
+/* ở html của div chứa nội dung khi bung màn lên */
 
 .descript{
     width: 100%;
