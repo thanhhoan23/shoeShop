@@ -68,7 +68,7 @@ function renderProduct(renderProduct) {
         </td>
         <td>${product.size}</td>
         <td>${product.color}</td>
-        <td>${product.price}</td>
+        <td>${formatCurrency(product.price)}</td>
         <td>${product.quantity}</td>
         <td>
             <button class="btn-edit-delete btn-edit " onclick= "makeEdit(${product.id})">Edit</button>
@@ -105,7 +105,7 @@ function makeAdd() {
     let id = findMaxid() + 1;
     let name = document.querySelector("#name").value;
     let photo = document.querySelector("#photo").value;
-    let size = document.querySelector("#size").value;
+    let size = (document.querySelector("#size").value);
     let color = document.querySelector("#color").value;
     let price = document.querySelector("#price").value;
     let quantity = document.querySelector("#quantity").value;
@@ -129,8 +129,7 @@ function makeAdd() {
         color,
         price,
         quantity,
-    )
-
+    );
 
     products.unshift(newProduct);
     setData(product_key, products);
@@ -165,6 +164,11 @@ function findMaxid() {
 }
 // P2-p1 giảm dần, nhưg id thì tăng lên 
 
+// Chuyển đổi tiền 
+function formatCurrency(number) {
+    return number.toLocaleString("vi", { style: "currency", currency: "VND" });
+  }
+
 // xóa sản phẩm
 
 function makeDelete(id) {
@@ -195,7 +199,7 @@ function makeEdit(productId) {
     document.querySelector("#photo").value = product.photo;
     document.querySelector("#size").value = product.size;
     document.querySelector("#color").value = product.color;
-    document.querySelector("#price").value = product.price;
+    document.querySelector("#price").value = formatCurrency(product.price);
     document.querySelector("#quantity").value = product.quantity;
     
 
@@ -214,7 +218,7 @@ function makeSave() {
     product.photo = document.querySelector("#photo").value;
     product.size = document.querySelector("#size").value;
     product.color = document.querySelector("#color").value;
-    product.price = document.querySelector("#price").value;
+    formatCurrency(product.price) = document.querySelector("#price").value;
     product.quantity = document.querySelector("#quantity").value;
 
     if (product.name.trim() == "" || product.name == null ||  product.photo.trim()== "" ||  product.photo==null
